@@ -1,6 +1,12 @@
 #!/bin/sh
 # auto create account and send passwd via email
 
+
+if [ `whoami` != "root" ];then
+    echo -e "\nPlease run as root ...\n"
+    exit 0
+fi
+
 #USERLIST="user1 user2"
 USERLIST=`cat user_list`
 ID_PREFIX=s
@@ -12,7 +18,7 @@ HOME="/home/student/"
 HOME_PERMISSION=751
 SHELL="/bin/tcsh"
 SERVER_HOSTNAME="server.hostname"
-SERVER_PORT="123"
+SERVER_PORT="22"
 
 mkdir -p $HOME
 
