@@ -30,7 +30,7 @@ User account for $COURSE:
 
 Your account is $ID_PREFIX$user, and the password is $PASS
 
-Please use a secure shell(ssh) client such as putty(http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe) to login.
+Please use a secure shell(ssh) client such as putty(http://ftp.yzu.edu.tw/putty/latest/x86/putty.exe) to login.
 
 If you want to trasfer files from/to this server, please use sftp protocol, because ftp is not safe, so we don't support it, you can use tools like filezilla to do it!
 (http://forum.cse.yzu.edu.tw/course/FileZilla_3.9.0.5_win32-setup.exe)
