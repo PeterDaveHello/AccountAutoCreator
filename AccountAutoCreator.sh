@@ -19,12 +19,20 @@ HOME_PERMISSION=751
 SHELL="/bin/tcsh"
 SERVER_HOSTNAME="server.hostname"
 SERVER_PORT="22"
+PUBLIC_HTML="Y"
 
 mkdir -p $HOME
 
 for user in $USERLIST
 do
     PASS=`pw useradd $ID_PREFIX$user -d $HOME$ID_PREFIX$user/ -m -M $HOME_PERMISSION -s $SHELL -w random | cut -d ' ' -f 5`
+
+    if [ "$PUBLIC_HTML" = "Y" ];then
+        sudo -u $ID_PREFIX$user mkdir -p $HOME$ID_PREFIX$user/public_html/
+        sudo -u $ID_PREFIX$user echo "<html><body><h1>It works!</h1></body></html>" > $HOME$ID_PREFIX$user/public_html/index.html
+        MSG="If you want to use http/web server service, you should put your web pages under 'public_html' folder, and you can access your website via 'http://$SERVER_HOSTNAME/~$ID_PREFIX$user/'"
+    fi
+
     echo "
 User account for $COURSE:
 
@@ -34,6 +42,8 @@ Please use a secure shell(ssh) client such as putty(http://ftp.yzu.edu.tw/putty/
 
 If you want to trasfer files from/to this server, please use sftp protocol, because ftp is not safe, so we don't support it, you can use tools like filezilla to do it!
 (http://forum.cse.yzu.edu.tw/course/FileZilla_3.9.0.5_win32-setup.exe)
+
+$MSG
 
 Server info:
 Hostname - $SERVER_HOSTNAME
