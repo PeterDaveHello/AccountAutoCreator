@@ -20,6 +20,8 @@ SHELL="/bin/tcsh"
 SERVER_HOSTNAME="server.hostname"
 SERVER_PORT="22"
 PUBLIC_HTML="Y"
+CREATE_PW_BAK_FILE="N"
+PW_BAK_FILE_NAME="account_creator_pw_backup_`date +%Y%m%d`"
 
 mkdir -p $HOME
 
@@ -31,6 +33,10 @@ do
         sudo -u $ID_PREFIX$user mkdir -p $HOME$ID_PREFIX$user/public_html/
         sudo -u $ID_PREFIX$user echo "<html><body><h1>It works!</h1></body></html>" > $HOME$ID_PREFIX$user/public_html/index.html
         MSG="If you want to use http/web server service, you should put your web pages under 'public_html' folder, and you can access your website via 'http://$SERVER_HOSTNAME/~$ID_PREFIX$user/'"
+    fi
+
+    if [ "$CREATE_PW_BAK_FILE" = "Y" ];then
+        echo "$ID_PREFIX$user $PASS" >> $PW_BAK_FILE_NAME
     fi
 
     echo "
