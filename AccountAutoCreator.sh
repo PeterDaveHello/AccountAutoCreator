@@ -61,6 +61,6 @@ Your comments and suggestions are welcome!
 
 Regards,
 Admin." | mail -s "User account for $COURSE" -b $ADMIN_BCC $ID_PREFIX$user@$USER_EMAIL_HOST -f $ADMIN_MAIL_SENDER
-    #echo -e "$ID_PREFIX$user \t $PASS" >> backup_password_list
+
 done
 
